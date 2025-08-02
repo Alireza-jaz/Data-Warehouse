@@ -19,7 +19,6 @@ Gold Layer : Business-ready views with derived KPIs and customer profiling, prep
 - Tableau (planned for visualization layer)  
 
 
-
 #Data Model (Silver Layer)
 
 The Silver Layer is designed in Star Schema format:
@@ -66,7 +65,3 @@ Dimension Tables
 4. Transform data into the Silver Layer (fact , dimension tables).
 5. Create Gold Layer Views using the provided SQL scripts.
 6. Optionally connect Tableau or Power BI for visualization.
-
-
-# Data-Warehouse
-SQL Data Warehouse project for banking transactions using Bronze–Silver–Gold architecture. Includes data cleaning, schema design, and KPI analysis for fraud detection and customer segmentation
