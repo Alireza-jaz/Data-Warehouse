@@ -8,65 +8,35 @@ Script Purpose:
 	  Run this script to re-define the DDL structure of 'bronze' Tables
 ===============================================================================
 */
+IF OBJECT_ID('raw_transaction','U') IS NOT NULL
+    DROP TABLE bronze.raw_transaction
+;GO
 
-USE  bank_transaction
-GO;
-
-IF OBJECT_ID('silver.customer','U') IS NOT NULL
-	DROP TABLE silver.customer
-
-CREATE TABLE silver.customer(
-		customer_id			 NVARCHAR(50) PRIMARY KEY
-	   ,customer_name		 NVARCHAR(50)
-	   ,gender				 NVARCHAR(10)
-	   ,age					 INT
-	   ,state				 NVARCHAR(50)
-	   ,city				 NVARCHAR(50)
-	   ,bank_branch			 NVARCHAR(50)
-	   ,account_type		 NVARCHAR(50)
-	   ,contact				 NVARCHAR(50)
-	   ,email				 NVARCHAR(50)
-)
-
-IF OBJECT_ID('silver.device','U') IS NOT NULL
-	DROP TABLE silver.device
-
-CREATE TABLE silver.device(
-		transaction_id		 NVARCHAR(50) PRIMARY KEY
-	   ,transaction_device	 NVARCHAR(50)
-	   ,transaction_type		 NVARCHAR(50)
-	   ,device_type		     NVARCHAR(50)
-)
-
-IF OBJECT_ID('silver.merchant','U') IS NOT NULL
-	DROP TABLE silver.merchant
-
-CREATE TABLE silver.merchant (
-    Merchant_ID        VARCHAR(50) PRIMARY KEY,
-    Merchant_Category  VARCHAR(100),
-    Transaction_Description VARCHAR(200)
+CREATE TABLE raw_transaction(
+	customer_id        NVARCHAR(250),
+	customer_name      NVARCHAR(150),
+	gender             NVARCHAR(15),
+	age                INT,
+	State              NVARCHAR(50),
+    City               NVARCHAR(50),
+    Bank_Branch        NVARCHAR(100),
+    Account_Type       NVARCHAR(50),
+    Transaction_ID     NVARCHAR(50),
+    Transaction_Date   NVARCHAR(50),
+    Transaction_Time   Time,
+    Transaction_Amount DECIMAL(18,2),
+    Merchant_ID        NVARCHAR(50),
+    Transaction_Type   NVARCHAR(50),
+    Merchant_Category  NVARCHAR(100),
+    Account_Balance    DECIMAL(18,2),
+    Transaction_Device NVARCHAR(50),
+    Transaction_Location NVARCHAR(255),
+    Device_Type        NVARCHAR(50),
+    Is_Fraud           NVARCHAR(20),
+    Transaction_Currency NVARCHAR(10),
+    Customer_Contact   NVARCHAR(100),
+    Transaction_Description NVARCHAR(255),
+    Customer_Email     NVARCHAR(255),
+    ANON NVARCHAR(255)
 );
-
-IF OBJECT_ID('silver.detail_date','U') IS NOT NULL
-	DROP TABLE silver.detail_date
-
-CREATE TABLE silver.detail_date (
-    transaction_id   NVARCHAR(50) PRIMARY KEY,
-    date             DATE,
-    Year             INT,
-    Quarter          NVARCHAR(10),
-    Month            NVARCHAR(10),
-    transaction_time TIME,
-	transaction_location NVARCHAR(100)
-);
-
-IF OBJECT_ID('silver.fact_transaction','U') IS NOT NULL
-	DROP TABLE silver.fact_transaction
-
-CREATE TABLE silver.fact_transaction (
-    transaction_id     VARCHAR(50) PRIMARY KEY,
-    customer_id        VARCHAR(50) ,
-    merchant_id        VARCHAR(50) ,
-    transaction_amount DECIMAL(18,2),
-    account_balance    DECIMAL(18,2),
-    Is_Fraud           BIT);  
+GO
