@@ -19,7 +19,7 @@ Gold Layer : Business-ready views with derived KPIs and customer profiling, prep
 - Tableau (planned for visualization layer)  
 
 
-#Data Model (Silver Layer)
+# Data Model (Silver Layer)
 
 The Silver Layer is designed in Star Schema format:
 
@@ -44,7 +44,7 @@ Dimension Tables
 | gold.customer_segmentation | Classifies customers into High, Medium, and Low spenders. |
 
 
-#Example KPIs Built
+# Example KPIs Built
 
 - Customer Segmentation 
   - High, Medium, and Low spenders based on transaction amounts.  
