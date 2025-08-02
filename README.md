@@ -4,7 +4,7 @@ This project demonstrates the design and implementation of a SQL-based Data Ware
 The solution follows a Bronze → Silver → Gold layered architecture to organize raw transactional data into structured, analysis-ready tables and views.
 
 
- #Project Structure
+ # Project Structure
 
 Bronze Layer : Raw transactional data loaded directly from flat files (CSV) without modifications.
 Silver Layer : Cleaned and structured data, split into Fact and Dimension tables (Star Schema).
